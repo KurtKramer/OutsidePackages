@@ -7,4 +7,5 @@ Win32_LIB_Release
 LIB Release
 Debug
 Release
+*.obj
 
