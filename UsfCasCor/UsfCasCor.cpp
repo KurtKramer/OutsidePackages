@@ -775,7 +775,7 @@ void  UsfCasCor::setup_network()
 
   the_random_seed += GetProcessId () + my_mpi_rank;
 
-  srand (the_random_seed);
+  srand ((int)the_random_seed);
   info (" Starting at %s seed: %ld\n",(NonRandomSeed)?"fixed":"random",
         the_random_seed);
 
@@ -2389,7 +2389,7 @@ void  UsfCasCor::load_network(char *netfile)
     warn("noutputs in net file does not match Noutputs.\n  Training will start from scratch.");
     return;
   }
-  if(nunits > MaxUnits){
+  if (nunits > MaxUnits){
     die("nunits(%d) in .wgt file is greater than MaxUnits in .net\n  Please change MaxUnits and try again.", nunits);
   }
     
