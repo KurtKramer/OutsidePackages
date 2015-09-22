@@ -9,3 +9,6 @@ Debug
 Release
 *.obj
 
+*.temp
+fftw-3.2.2-vs2008.zip
+*.user
