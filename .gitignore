@@ -9,3 +9,5 @@ Debug
 Release
 *.obj
 
+*.a
+zlib123/.cproject
