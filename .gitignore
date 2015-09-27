@@ -8,6 +8,8 @@ LIB Release
 Debug
 Release
 *.obj
-
 *.a
 zlib123/.cproject
+*.temp
+fftw-3.2.2-vs2008.zip
+*.user
