@@ -657,7 +657,7 @@ union ft64 {
   __int64 i64;
  };
 
-struct timespec {
+struct MySQL_timespec {
   union ft64 tv;
   /* The max timeout value in millisecond for native_cond_timedwait */
   long max_timeout_msec;
@@ -669,7 +669,7 @@ C_MODE_START
 extern ulonglong my_getsystime(void);
 C_MODE_END
 
-static inline void set_timespec_nsec(struct timespec *abstime, ulonglong nsec)
+static inline void set_timespec_nsec(struct MySQL_timespec *abstime, ulonglong nsec)
 {
 #ifndef _WIN32
   ulonglong now= my_getsystime() + (nsec / 100);
@@ -683,19 +683,19 @@ static inline void set_timespec_nsec(struct timespec *abstime, ulonglong nsec)
 #endif
 }
 
-static inline void set_timespec(struct timespec *abstime, ulonglong sec)
+static inline void set_timespec(struct MySQL_timespec *abstime, ulonglong sec)
 {
   set_timespec_nsec(abstime, sec * 1000000000ULL);
 }
 
 /**
-   Compare two timespec structs.
+   Compare two MySQL_timespec structs.
 
    @retval  1 If ts1 ends after ts2.
    @retval -1 If ts1 ends before ts2.
    @retval  0 If ts1 is equal to ts2.
 */
-static inline int cmp_timespec(struct timespec *ts1, struct timespec *ts2)
+static inline int cmp_timespec(struct MySQL_timespec *ts1, struct MySQL_timespec *ts2)
 {
 #ifndef _WIN32
   if (ts1->tv_sec > ts2->tv_sec ||
@@ -713,7 +713,7 @@ static inline int cmp_timespec(struct timespec *ts1, struct timespec *ts2)
   return 0;
 }
 
-static inline ulonglong diff_timespec(struct timespec *ts1, struct timespec *ts2)
+static inline ulonglong diff_timespec(struct MySQL_timespec *ts1, struct MySQL_timespec *ts2)
 {
 #ifndef _WIN32
   return (ts1->tv_sec - ts2->tv_sec) * 1000000000ULL +
