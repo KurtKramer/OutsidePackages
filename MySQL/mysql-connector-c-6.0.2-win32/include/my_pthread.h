@@ -82,7 +82,7 @@ union ft64 {
   __int64 i64;
 };
 
-struct timespec {
+struct MySQL_timespec {
   union ft64 tv;
   /* The max timeout value in millisecond for pthread_cond_timedwait */
   long max_timeout_msec;
@@ -104,7 +104,7 @@ int pthread_create(pthread_t *,pthread_attr_t *,pthread_handler,void *);
 int pthread_cond_init(pthread_cond_t *cond, const pthread_condattr_t *attr);
 int pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex);
 int pthread_cond_timedwait(pthread_cond_t *cond, pthread_mutex_t *mutex,
-			   struct timespec *abstime);
+			   struct MySQL_timespec *abstime);
 int pthread_cond_signal(pthread_cond_t *cond);
 int pthread_cond_broadcast(pthread_cond_t *cond);
 int pthread_cond_destroy(pthread_cond_t *cond);
@@ -257,7 +257,7 @@ int sigwait(sigset_t *setp, int *sigp);		/* Use our implemention */
 #if defined(HAVE_BROKEN_PTHREAD_COND_TIMEDWAIT) && !defined(SAFE_MUTEX)
 extern int my_pthread_cond_timedwait(pthread_cond_t *cond,
 				     pthread_mutex_t *mutex,
-				     struct timespec *abstime);
+				     struct MySQL_timespec *abstime);
 #define pthread_cond_timedwait(A,B,C) my_pthread_cond_timedwait((A),(B),(C))
 #endif
 
@@ -315,7 +315,7 @@ struct tm *gmtime_r(const time_t *clock, struct tm *res);
 #undef pthread_cond_timedwait
 #define pthread_cond_timedwait(a,b,c) my_pthread_cond_timedwait((a),(b),(c))
 int my_pthread_cond_timedwait(pthread_cond_t *cond, pthread_mutex_t *mutex,
-			      struct timespec *abstime);
+			      struct MySQL_timespec *abstime);
 #endif
 
 #if defined(HPUX10)
@@ -353,7 +353,7 @@ int my_pthread_mutex_trylock(pthread_mutex_t *mutex);
   set_timespec_time_nsec((ABSTIME),my_getsystime(),(NSEC))
 #endif /* !set_timespec_nsec */
 
-/* adapt for two different flavors of struct timespec */
+/* adapt for two different flavors of struct MySQL_timespec */
 #ifdef HAVE_TIMESPEC_TS_SEC
 #define MY_tv_sec  ts_sec
 #define MY_tv_nsec ts_nsec
@@ -429,7 +429,7 @@ int safe_mutex_destroy(safe_mutex_t *mp,const char *file, uint line);
 int safe_cond_wait(pthread_cond_t *cond, safe_mutex_t *mp,const char *file,
 		   uint line);
 int safe_cond_timedwait(pthread_cond_t *cond, safe_mutex_t *mp,
-			struct timespec *abstime, const char *file, uint line);
+			struct MySQL_timespec *abstime, const char *file, uint line);
 void safe_mutex_global_init(void);
 void safe_mutex_end(FILE *file);
 void safe_mutex_free_deadlock_data(safe_mutex_t *mp);
