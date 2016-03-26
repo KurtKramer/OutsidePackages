@@ -39,8 +39,8 @@ double Dist2Sim(double dist) {
 
 double Sim2Dist(double sim) {
 	switch(hfunction) {
-		case LINEAR: return maxDist()*(1-sim);
-		case EXPONENTIAL: return -log(sim);
+		case LINEAR: return maxDist () * (1 - sim);
+		case EXPONENTIAL: return -log (sim);
 /*		case DISTR: {
 			for(int i=0; distr[i]>=sim; i++);
 			return i*maxDist()/1001;
@@ -54,7 +54,7 @@ SimpleQuery::Consistent(const GiSTentry& entry)
 {
 	assert(entry.IsA()==MTENTRY_CLASS);
 //	cout << "Evaluating " << entry;
-	if((grade==0)||(fabs(grade-((MTentry &)entry).Key()->distance)<=radius+((MTentry &)entry).maxradius())) {	// prune for reference point
+	if  ((grade==0) || (fabs (grade - ((MTentry &)entry).Key()->distance) <= radius + ((MTentry &)entry).maxradius())) {	// prune for reference point
 		grade=pred->distance(((MTentry &)entry).object());
 		return(grade<=radius+((MTentry &)entry).maxradius());
 	}
