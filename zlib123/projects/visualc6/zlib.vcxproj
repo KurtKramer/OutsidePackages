@@ -53,6 +53,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7C37D3E1-52BA-4DC0-9C7B-49375BF46B37}</ProjectGuid>
     <RootNamespace>zlib</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EmbeddedRelease|Win32'" Label="Configuration">
@@ -211,7 +212,7 @@
     <IntDir>$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)\Libraries\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)Libraries\$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EmbeddedDebug|Win32'">
