@@ -6,7 +6,7 @@ doubt, this particular copy of the software is released
 under the version 2 of the GNU General Public License.
 MySQL Connector/C is brought to you by Oracle.
 
-Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
 
 License information can be found in the COPYING file.
 
@@ -51,7 +51,13 @@ DOCUMENTATION LOCATION
  
 You may also find the latest copy of the documentation on 
 the MySQL website at
-<http://dev.mysql.com/doc/connector-c/en/index.html>
+<http://dev.mysql.com/doc/connector-c/en/index.html>.
+
+For the new features/bugfix history, see release notes at
+<https://dev.mysql.com/doc/relnotes/connector-c/en/news-6-1.html>.
+
+For installation instructions see
+<https://dev.mysql.com/doc/connector-c/en/connector-c-installation.html>.
 
  
 ***************************************************************

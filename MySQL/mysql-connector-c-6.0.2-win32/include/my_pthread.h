@@ -117,8 +117,9 @@ struct tm *gmtime_r(const time_t *timep,struct tm *tmp);
 void pthread_exit(void *a);
 int pthread_join(pthread_t thread, void **value_ptr);
 
-
+#if  !defined(WIN64)
 #define ETIMEDOUT 145		    /* Win32 doesn't have this */
+#endif
 #define HAVE_LOCALTIME_R		1
 #define _REENTRANT			1
 #define HAVE_PTHREAD_ATTR_SETSTACKSIZE	1
